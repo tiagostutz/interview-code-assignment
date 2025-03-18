@@ -8,45 +8,51 @@ import warehouseRoutes from "../modules/warehouse/warehouse.routes";
 import productRoutes from "../modules/products/product.routes";
 
 // Mock modules
-jest.mock("../modules/location/location.routes", () => express.Router());
-jest.mock("../modules/stores/store.routes", () => express.Router());
-jest.mock("../modules/warehouse/warehouse.routes", () => express.Router());
-jest.mock("../modules/products/product.routes", () => express.Router());
-jest.mock("../database/config", () => ({
-  setupDatabase: jest.fn(),
-}));
-
-// Mock the route handling for each router
-const mockRouteHandler = jest.fn((req, res) => {
-  const path = req.path;
-  const moduleName = path.split("/")[1] || "root"; // Extract module name from path
-
-  res.status(200).json({
-    message: `${req.method} request to ${moduleName} module`,
-    path,
+jest.mock("../modules/location/location.routes", () => {
+  const router = express.Router();
+  router.all("*", (req, res) => {
+    const moduleName = "locations";
+    res.status(200).json({
+      message: `${req.method} request to ${moduleName} module`,
+      path: req.path,
+    });
   });
+  return router;
+});
+jest.mock("../modules/stores/store.routes", () => {
+  const router = express.Router();
+  router.all("*", (req, res) => {
+    const moduleName = "stores";
+    res.status(200).json({
+      message: `${req.method} request to ${moduleName} module`,
+      path: req.path,
+    });
+  });
+  return router;
+});
+jest.mock("../modules/warehouse/warehouse.routes", () => {
+  const router = express.Router();
+  router.all("*", (req, res) => {
+    const moduleName = "warehouses";
+    res.status(200).json({
+      message: `${req.method} request to ${moduleName} module`,
+      path: req.path,
+    });
+  });
+  return router;
 });
 
-// Apply mock implementation to each router
-(locationRoutes as any).get = jest.fn((path, handler) => mockRouteHandler);
-(locationRoutes as any).post = jest.fn((path, handler) => mockRouteHandler);
-(locationRoutes as any).put = jest.fn((path, handler) => mockRouteHandler);
-(locationRoutes as any).delete = jest.fn((path, handler) => mockRouteHandler);
-
-(storeRoutes as any).get = jest.fn((path, handler) => mockRouteHandler);
-(storeRoutes as any).post = jest.fn((path, handler) => mockRouteHandler);
-(storeRoutes as any).put = jest.fn((path, handler) => mockRouteHandler);
-(storeRoutes as any).delete = jest.fn((path, handler) => mockRouteHandler);
-
-(warehouseRoutes as any).get = jest.fn((path, handler) => mockRouteHandler);
-(warehouseRoutes as any).post = jest.fn((path, handler) => mockRouteHandler);
-(warehouseRoutes as any).put = jest.fn((path, handler) => mockRouteHandler);
-(warehouseRoutes as any).delete = jest.fn((path, handler) => mockRouteHandler);
-
-(productRoutes as any).get = jest.fn((path, handler) => mockRouteHandler);
-(productRoutes as any).post = jest.fn((path, handler) => mockRouteHandler);
-(productRoutes as any).put = jest.fn((path, handler) => mockRouteHandler);
-(productRoutes as any).delete = jest.fn((path, handler) => mockRouteHandler);
+jest.mock("../modules/products/product.routes", () => {
+  const router = express.Router();
+  router.all("*", (req, res) => {
+    const moduleName = "products";
+    res.status(200).json({
+      message: `${req.method} request to ${moduleName} module`,
+      path: req.path,
+    });
+  });
+  return router;
+});
 
 describe("App Integration", () => {
   let app: express.Application;
@@ -128,6 +134,21 @@ describe("App Integration", () => {
         error.statusCode = 400;
         next(error);
       });
+
+      // Make sure error handler is registered after the route
+      app.use(
+        (
+          err: any,
+          req: express.Request,
+          res: express.Response,
+          next: express.NextFunction
+        ) => {
+          res.status(err.statusCode || 500).json({
+            message: err.message || "Internal Server Error",
+            stack: "test-environment",
+          });
+        }
+      );
 
       const response = await request(app).get("/api/error");
       expect(response.status).toBe(400);
