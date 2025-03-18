@@ -59,30 +59,3 @@ logs/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-# Eclipse
-.project
-.classpath
-.settings/
-bin/
-
-# NetBeans
-nb-configuration.xml
-
-# Visual Studio Code
-.vscode
-
-# Vim
-*.swp
-*.swo
-
-# patch
-*.orig
-*.rej
-
-# Maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-release.properties
