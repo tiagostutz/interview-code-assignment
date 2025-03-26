@@ -1,3 +1,4 @@
+import { StoreLegacyIntegrator } from "./store.legacy";
 import Store from "./store.model";
 
 export class StoreService {
@@ -19,7 +20,13 @@ export class StoreService {
    * Create a new store
    */
   async create(storeData: any): Promise<Store> {
-    return Store.create(storeData);
+    const createdStore = await Store.create(storeData);
+
+    // send to legacy system
+    const legacyIntegrator = new StoreLegacyIntegrator();
+    legacyIntegrator.sendToLegacySystem(createdStore);
+
+    return createdStore;
   }
 
   /**

@@ -1,10 +1,10 @@
 # Code Assignment
 
-Your assignment is to implement some missing pieces on this TypeScript codebase and answer some small questions about possible changes and improvements on code. Those tasks are listed below. The questions can be answered in the [QUESTIONS](QUESTIONS.md) file.
+This code was produced by an AI codification assistant and your goal will be to implement some missing pieces on this TypeScript codebase in order to complete the [Tasks](#tasks) listed below. In case that what is asked in the task is already implemented, add a comment to the code where the implementation is explaining that this is already working. 
 
 This assignment should not take too long. We are not expecting you to expend an entire day or a whole weekend on this to be completed, but with the help of an AI assistant, usually this can be done in around 4 hours by a senior 🤖
 
-Some parts of the code contain methods that are already defined but currently throw errors with messages like `"Method not implemented"`. Other methods are implemented but incomplete, and there may be some missing pieces. Your goal is to fill in all these gaps, ensuring the code works correctly with all the specified endpoints, while respecting the constraints and validations outlined in this file.
+Some parts of the code contain methods that are already defined but currently throw errors with messages like `"Method not implemented"`. Other methods are implemented but incomplete, and there may be some missing pieces, after all, AI generated this. Your goal is to fill in all these gaps, ensuring the code works correctly with all the specified endpoints, while respecting the constraints and validations outlined in this file.
 
 Also, just a minimum set of tests are present, feel free to bring more as well to craft the tests related to the implementations you will work on.
 
