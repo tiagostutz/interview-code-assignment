@@ -1,4 +1,4 @@
-# Java Code Assignment
+# Interview Code Assignment
 [![This is a Poppins project](https://raw.githubusercontent.com/bancodobrasil/poppins/master/badge-poppins.svg)](https://github.com/bancodobrasil/poppins)
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
@@ -20,13 +20,6 @@ You will find the tasks of this assignment on [CODE_ASSIGNMENT](assignment/CODE_
 
 ## About the code base
 
-This is based on https://github.com/quarkusio/quarkus-quickstarts
+Some of this code here is based on https://github.com/quarkusio/quarkus-quickstarts
 
-### Requirements
-
-To compile and run this demo you will need:
-
-- JDK 17+
-
-In addition, you will need either a PostgreSQL database, or Docker to run one.
 
