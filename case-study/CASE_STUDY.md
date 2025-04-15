@@ -42,5 +42,4 @@
 
 ## Instructions for Candidates
 Before starting the case study, read the [BRIEFING.md](BRIEFING.md) to quickly understand the domain, entities, business rules, and other relevant details.
-**Analyze the Scenarios**: Carefully analyze each scenario and consider the questions provided.
-**Hypothesis**: Discuss your ideas and approaches to address the problems presented in each scenario. Be sure to consider validations, constraints, potential challenges and possible solutions.
+**Analyze the Scenarios**: Carefully analyze each scenario and consider the tasks provided. To make informed decisions about the project's scope and ensure valuable outcomes, what key information would you seek to gather before defining the boundaries of the work?
